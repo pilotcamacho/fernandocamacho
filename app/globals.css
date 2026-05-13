@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 /* ─── Fernando Camacho — Design Tokens ──────────────────────────────────────── */
 @theme {
@@ -30,32 +31,41 @@
   --color-neutral-900: #0f172a;
   --color-neutral-950: #020617;
 
-  /* Semantic surfaces */
+  /* Semantic — light mode defaults */
   --color-surface:        #ffffff;
   --color-surface-muted:  #f8fafc;
   --color-surface-subtle: #f1f5f9;
 
-  /* Text */
   --color-text-primary:   #0f172a;
   --color-text-secondary: #334155;
   --color-text-muted:     #64748b;
   --color-text-inverse:   #ffffff;
 
-  /* Borders */
   --color-border:        #e2e8f0;
   --color-border-strong: #cbd5e1;
 
-  /* Shadows */
   --shadow-card:     0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.06);
   --shadow-elevated: 0 4px 12px 0 rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.06);
 
-  /* Border radii */
   --radius-sm:   4px;
   --radius-md:   8px;
   --radius-lg:   12px;
   --radius-xl:   16px;
   --radius-2xl:  24px;
   --radius-pill: 9999px;
+}
+
+/* ─── Dark mode overrides ────────────────────────────────────────────────────── */
+.dark {
+  color-scheme: dark;
+  --color-surface:        #0f172a;
+  --color-surface-muted:  #1e293b;
+  --color-surface-subtle: #0f172a;
+  --color-text-primary:   #f1f5f9;
+  --color-text-secondary: #e2e8f0;
+  --color-text-muted:     #94a3b8;
+  --color-border:         #1e293b;
+  --color-border-strong:  #334155;
 }
 
 /* ─── Base styles ────────────────────────────────────────────────────────────── */
@@ -77,13 +87,13 @@ body {
   border-radius: var(--radius-sm);
 }
 
-/* Shared form input style */
+/* Shared form input — semantic vars auto-adapt in dark mode */
 .input-base {
   width: 100%;
   padding: 0.625rem 1rem;
   border-radius: var(--radius-md);
   border: 1px solid var(--color-border);
-  background: white;
+  background: var(--color-surface);
   color: var(--color-text-primary);
   font-size: 0.875rem;
   transition: box-shadow 0.15s;

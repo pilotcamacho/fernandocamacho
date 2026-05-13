@@ -1,0 +1,330 @@
+# Fernando Camacho — Personal Portal
+
+## Project Overview
+
+A professional portfolio and personal branding website for Fernando Camacho Ospina — PhD data scientist, engineer, author, private pilot, and multilingual professional (ES/EN/DE). The portal serves as a living CV, a showcase of projects and publications, and a landing page for his book *Propiología*.
+
+The new portal replaces a previous Angular/Ionic SPA and is rebuilt on Next.js for strong SEO and AEO (Answer Engine Optimization) characteristics, with AWS Amplify Gen 2 providing all backend infrastructure.
+
+### Reference Architecture
+
+The architecture and folder conventions of this project must follow the same standard pattern used in `propiology_org`. That project is the reference implementation for Amplify Gen 2 + Next.js 15 in this workspace. When in doubt about how to wire auth, data, storage, or API routes, defer to how it is done there.
+
+---
+
+## Tech Stack
+
+| Layer | Technology | Version / Notes |
+|---|---|---|
+| Frontend | Next.js | 15.x, App Router |
+| Language | TypeScript | Strict mode |
+| Styling | Tailwind CSS | v4, via `@tailwindcss/postcss` |
+| Backend | **AWS Amplify Gen 2** | `@aws-amplify/backend` — **only Gen 2, no Gen 1** |
+| Auth | Amazon Cognito | Defined in `amplify/auth/resource.ts` |
+| Database | Amazon DynamoDB | Via Amplify Gen 2 GraphQL schema (`amplify/data/resource.ts`) |
+| File Storage | Amazon S3 | Via Amplify Gen 2 Storage (`amplify/storage/resource.ts`) |
+| Hosting | AWS Amplify Hosting | CI/CD from git, CDN, HTTPS, auto-deploy on push |
+| AWS SDK | AWS SDK v3 | `@aws-sdk/client-dynamodb`, `@aws-sdk/lib-dynamodb`, `@aws-sdk/client-s3` |
+| Amplify client | aws-amplify | v6.x, configured with `{ ssr: true }` |
+
+**No Gen 1 Amplify constructs.** All backend resources (auth, data, storage, functions) are defined exclusively through Amplify Gen 2 TypeScript files under `amplify/`.
+
+---
+
+## Standard Project Architecture
+
+The project follows the same standard structure as `propiology_org`. Files live at the project root — there is no `src/` directory.
+
+```
+fernandocamacho/
+├── amplify/                        # AWS Amplify Gen 2 — Infrastructure as Code
+│   ├── backend.ts                  # Root backend: composes all resources
+│   ├── auth/
+│   │   └── resource.ts             # Cognito User Pool definition
+│   ├── data/
+│   │   └── resource.ts             # GraphQL schema → DynamoDB tables
+│   └── storage/
+│       └── resource.ts             # S3 bucket + access rules
+├── app/                            # Next.js 15 App Router (root, no src/)
+│   ├── layout.tsx                  # Root layout: wraps with AmplifyProvider
+│   ├── globals.css                 # Tailwind v4 @theme tokens + base styles
+│   ├── robots.ts                   # SEO robots.txt
+│   ├── sitemap.ts                  # Dynamic sitemap from routes
+│   ├── page.tsx                    # Home (/)
+│   ├── about/page.tsx
+│   ├── experience/page.tsx
+│   ├── projects/page.tsx
+│   ├── education/page.tsx
+│   ├── publications/page.tsx
+│   ├── awards/page.tsx
+│   ├── book/page.tsx               # Propiología landing page
+│   ├── contact/page.tsx
+│   ├── admin/                      # Protected admin area
+│   │   ├── layout.tsx              # Wraps with RequireAuth
+│   │   ├── page.tsx                # Admin dashboard
+│   │   ├── login/page.tsx          # Cognito login
+│   │   └── [section]/page.tsx      # Dynamic CRUD pages
+│   └── api/
+│       └── contact/route.ts        # Contact form → DynamoDB
+├── components/
+│   ├── providers/
+│   │   └── AmplifyProvider.tsx     # 'use client' — calls configureAmplify()
+│   ├── auth/
+│   │   ├── RequireAuth.tsx         # Client-side auth guard (getCurrentUser)
+│   │   └── LoginForm.tsx
+│   ├── layout/
+│   │   ├── Header.tsx
+│   │   ├── Footer.tsx
+│   │   └── MobileMenu.tsx
+│   └── ui/
+│       ├── Card.tsx
+│       ├── Badge.tsx
+│       ├── SectionHeader.tsx
+│       └── BackLink.tsx
+├── lib/
+│   ├── amplify/
+│   │   ├── amplifyConfig.ts        # Amplify.configure(outputs, { ssr: true })
+│   │   └── index.ts
+│   ├── data/                       # Server-side data helpers (AWS SDK v3)
+│   │   └── db.ts
+│   └── seo/
+│       ├── JsonLd.tsx              # JSON-LD structured data components
+│       └── metadata.ts             # generateMetadata helpers
+├── types/
+│   └── index.ts                    # TypeScript interfaces for all content types
+├── public/
+│   ├── favicon.ico
+│   ├── manifest.webmanifest
+│   ├── images/
+│   └── icons/                      # PWA icons (all sizes)
+├── scripts/
+│   ├── patch-graphql.js            # Fixes graphql version conflicts
+│   └── patch-amplify-imports.js    # Fixes ESM imports post-build
+├── middleware.ts                    # Admin route protection redirect
+├── next.config.ts
+├── tsconfig.json                    # strict: true, @/* → ./*
+├── postcss.config.mjs
+├── amplify_outputs.json             # Auto-generated by Amplify — never edit manually
+├── .env.local                       # Local secrets — never committed
+├── CLAUDE.md
+└── IMPLEMENTATION_PLAN.md
+```
+
+### Key Architecture Conventions
+
+- **`amplify/`** is the single source of truth for all AWS resources. No manual resource creation in the AWS Console.
+- **`amplify_outputs.json`** is auto-generated by `npx ampx sandbox` (local) or by Amplify Hosting (CI). Never edit it manually.
+- **`AmplifyProvider`** is a `'use client'` component in `components/providers/`. It calls `configureAmplify()` once. The root `app/layout.tsx` wraps children with it.
+- **`configureAmplify()`** in `lib/amplify/amplifyConfig.ts` calls `Amplify.configure(outputs, { ssr: true })`.
+- **`RequireAuth`** is a `'use client'` guard component that calls `getCurrentUser()` from `aws-amplify/auth` and redirects to `/admin/login` on failure.
+- **API routes** use AWS SDK v3 directly (not GraphQL) for server-side DynamoDB access.
+- **`postinstall` script** compiles `amplify/**/*.ts` to `.mjs` via esbuild. Required for Amplify Gen 2 Lambda functions.
+- **`@/*`** import alias maps to the project root (`./*`), not a `src/` directory.
+
+---
+
+## Amplify Gen 2 Backend
+
+### Auth (`amplify/auth/resource.ts`)
+- Login method: email + password
+- Self sign-up: **disabled** — Fernando is the only user
+- User group: `Admin`
+- MFA: optional (TOTP recommended)
+- Fernando's account created via CLI or Console after first deploy
+
+### Data (`amplify/data/resource.ts`)
+GraphQL schema defining all DynamoDB tables. Authorization modes:
+- **Default**: Cognito User Pool (authenticated operations)
+- **API Key** (30-day expiry): public read for projects, publications, education, experience, awards
+
+| Model | Fields | Auth |
+|---|---|---|
+| `Project` | title, company, description, date, order, tags | public read, Admin write |
+| `Publication` | authors, title, venue, year, doi, s3PdfKey, order | public read, Admin write |
+| `Experience` | company, role, location, startDate, endDate, description, achievements[], order | public read, Admin write |
+| `Education` | institution, degree, field, startYear, endYear, thesis, s3DiplomaKey, s3DiplomaImageKey, order | public read, Admin write |
+| `Award` | name, year, issuer, description, order | public read, Admin write |
+| `Contact` | name, email, subject, message, createdAt | Admin read only |
+| `SiteSetting` | key, value | public read, Admin write |
+
+### Storage (`amplify/storage/resource.ts`)
+- `profile-images/*` — public read, Admin write
+- `diplomas/*` — public read, Admin write
+- `publications/*` — public read, Admin write
+
+---
+
+## Authentication Model
+
+- All public routes are accessible without login
+- `/admin/**` is protected; unauthenticated access redirects to `/admin/login`
+- A single Cognito `Admin` group user is provisioned for Fernando
+- No public sign-up — `allowUnauthenticatedIdentities` disabled
+
+---
+
+## Portal Sections
+
+### Home (`/`)
+- Hero with profile photo and name
+- Short professional tagline ("PhD · Data Scientist · Engineer · Author")
+- Expandable bio (short/full client-side toggle)
+- Navigation cards linking to all sections
+
+### About (`/about`)
+- Full professional biography
+- Personal info: languages (ES/EN/DE/FR-basic), nationalities (Colombian & Australian)
+- Interests: flying, photography, foreign languages, technology, mathematics
+- Contact block: f.camacho@peopleart.co · Bogotá, Colombia
+
+### Work Experience (`/experience`)
+Seven roles, reverse-chronological:
+1. Senior Education Data Analyst — Open English (2018–present), Bogotá
+2. Professor / Researcher — Universidad de la Sabana (2014–2017), Chía
+3. Independent Consultant — Woobsing / Emoxional / Red I5 (2007–2014)
+4. Electric Vehicle Project Director — Eco-Citi S.A. (2007–2008)
+5. Researcher / Lecturer — Universidad de los Andes (2006–2007)
+6. International Account Manager — AMD Telemedicine (2000–2005), Lowell MA
+7. Senior Partner — Diseño Informático Ltda. (1992–1996), Bogotá
+
+### Projects (`/projects`)
+21+ cards in a responsive grid, client-side filterable by decade. Key projects:
+- Optimal teacher allocation (2020, OpenEnglish)
+- Statistical class-reservation model (2018, OpenEnglish)
+- Academic outcome prediction (2017, U. Sabana)
+- Keystroke dynamics user ID (2017, U. Sabana)
+- Long Tail SEO system — Premio Innova 2013 winner (Woobsing)
+- Neuroscience marketing tool (Emoxional, 2010–2013)
+- Real estate valuation system (Red I5, 2009)
+- Ultra-light electric vehicle (Eco-Citi, 2007–2008)
+- Telemedicine system, Republic of Sudan (AMD, 2000–2005)
+- Hollow fiber bioreactor prototype (UNSW, 1998)
+- Holter equipment (U. Andes, 1991)
+
+### Education (`/education`)
+- PhD, Statistical Analysis in Biomedical Engineering — UNSW, Sydney (2002–2005)
+- Master of Biomedical Engineering — UNSW, Sydney (1996–1998)
+- Research — Universidad de los Andes (1999–2000)
+- Graduate Studies in Industrial Process Automation — U. Andes (1992–1993), 1st of class
+- Electrical & Electronic Engineering — U. Andes (1986–1991), Top 5%
+- German School diploma (C1) — Colegio Andino-Deutsche Schule (1974–1985)
+- Private Pilot & Glider Instructor — Aeroclub de Colombia (1991–1993)
+- Certifications: MIT Big Data Challenge, Coursera (from existing assets)
+
+Diploma images and PDFs stored in S3 and linked from DynamoDB entries.
+
+### Publications (`/publications`)
+Eight entries, reverse-chronological, with DOI links and PDF downloads from S3:
+1. Zwerg-Villegas et al. (2022). *Global Business Review*
+2. Blanco-Valbuena et al. (2018). *Información Tecnológica*
+3. Camacho & Avolio (2006). ESH Congress, Madrid (poster)
+4. Lauto et al. (2005). *Lasers in Surgery and Medicine*
+5. Camacho et al. (2005). ESH Congress, Milan (poster)
+6. Camacho et al. (2004). *Physiological Measurement*
+7. Akay (Ed.) (2001). IEEE Press — Nonlinear Biomedical Signal Processing (contributor)
+8. Qasem et al. (1998). Euriscon, Athens
+
+### Awards & Scholarships (`/awards`)
+- Premio Innova 2013 — National Innovation Award (Innpulsa/Colombia)
+- Doctoral Scholarship 2001 — Industry/Government grant, Australia
+- Beca Colfuturo 1996 — Colombian scholarship for Master's in Australia
+
+### Book — Propiología (`/book`)
+- Dedicated landing page for *Propiología* (Spanish, Kindle, March 2026)
+- Cover image, synopsis, key themes (content from DOCX, curated by Fernando)
+- "Comprar en Kindle" external purchase link
+- Author bio block linking to /about
+
+### Contact (`/contact`)
+- Form: name, email, subject, message
+- Submission via `/api/contact` route → DynamoDB `Contact` table
+- Client-side validation (react-hook-form + zod)
+- Success/error feedback inline
+- Direct contact: f.camacho@peopleart.co · Bogotá, Colombia
+
+### Admin Panel (`/admin`) — Protected by Cognito
+- Dashboard with counts per content type
+- CRUD for: projects, publications, experience, education, awards, settings
+- Read-only inbox for contact submissions
+- File upload to S3 for diplomas and publication PDFs
+- Single-user, no role management needed
+
+---
+
+## SEO & AEO Requirements
+
+### SEO
+- SSG (static generation) for all public pages; revalidate after admin updates
+- Next.js `metadata` API per page: title, description, OpenGraph, canonical URL
+- Semantic HTML: `<article>`, `<section>`, `<main>`, `<time>`, `<address>`
+- Next.js `<Image>` for all images (WebP, lazy loading)
+- `sitemap.ts` and `robots.ts` at app root
+
+### AEO (Answer Engine Optimization)
+JSON-LD structured data via `lib/seo/JsonLd.tsx`:
+- `Person` schema in root layout (name, jobTitle, alumniOf, awards, url)
+- `Book` schema on `/book`
+- `ScholarlyArticle` schema per publication on `/publications`
+- `BreadcrumbList` on all sub-pages
+
+---
+
+## Design Principles
+
+- **Simple and professional** — clean layout, generous whitespace, no visual clutter
+- **Content-first** — structure serves the content
+- **Mobile-first responsive** — Tailwind breakpoints: sm → md → lg → xl
+- **Dark/light mode** — Tailwind v4 `dark:` classes; toggle stored in `localStorage`
+- **Performance** — SSG preferred, minimal client JS (`'use client'` only where interaction is needed)
+- **Accessibility** — ARIA labels, keyboard navigation, sufficient contrast
+
+Color palette: blue-centric professional (`#3880ff` as reference primary), refined with Tailwind v4 `@theme` CSS custom properties defined in `globals.css`.
+
+---
+
+## Assets to Migrate
+
+| Asset | Old Path | Destination |
+|---|---|---|
+| Profile photo | `assets/fcoOK_new.jpg` | `public/images/` or S3 |
+| Logo/avatar | `assets/fco.png` | `public/images/` |
+| Favicon | `assets/icon/fco.ico` | `public/favicon.ico` |
+| Diploma images | `assets/diplomas/*.jpg` | S3 `diplomas/` |
+| Diploma PDFs | `assets/diplomas/*.pdf` | S3 `diplomas/` |
+| Publication PDFs | `assets/publications/*.pdf` | S3 `publications/` |
+| PWA icons | `assets/icons/*.png` | `public/icons/` |
+
+---
+
+## Environment Variables
+
+```bash
+# Site URL
+NEXT_PUBLIC_SITE_URL=https://fernandocamacho.com
+
+# Amplify outputs (auto-injected via amplify_outputs.json — do not set manually)
+# These are read from amplify_outputs.json by Amplify.configure()
+
+# DynamoDB table names (set from Amplify Console > Environment variables)
+CONTACT_TABLE_NAME=Contact-XXXXXXXXXX
+
+# AWS region
+AWS_REGION=us-east-1
+
+# S3 bucket name (set from Amplify Console)
+STORAGE_BUCKET_NAME=fernandocamacho-storage-XXXXXXXXXX
+```
+
+Amplify resource IDs (Cognito pool, GraphQL endpoint, API key, S3 bucket) are auto-generated in `amplify_outputs.json`. Never hardcode them.
+
+---
+
+## Out of Scope (v1)
+
+- Multi-language toggle (i18n infrastructure deferred)
+- Blog or news section
+- Analytics dashboard
+- Newsletter subscription
+- Payments (book links to external store)
+- Lambda functions (no email automation needed in v1)
+- Public comments or social features

@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\pilot\\\\Documents\\\\basura\\\\fernandocamacho-20260513T020830Z-3-001\" -Recurse -Force)",
+      "Bash(Select-Object FullName)",
+      "Bash(Sort-Object FullName)",
+      "Bash(ConvertTo-Json)",
+      "Bash(Get-Content *)",
+      "PowerShell(New-Item *)",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\pilot\\\\Documents\\\\FERNANDO\\\\Documentos_Apps\\\\propiology_org\" -Recurse -Force)",
+      "Bash(Select-Object -ExpandProperty FullName)",
+      "Bash(Sort-Object)",
+      "Bash(xargs ls -la)",
+      "Bash(grep -E \"^\\\\./[^/]+/?$|^\\\\./[^/]+/[^/]+/?$|^\\\\./[^/]+/[^/]+/[^/]+/?$\")",
+      "PowerShell(npm *)"
+    ]
+  }
+}

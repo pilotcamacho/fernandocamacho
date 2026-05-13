@@ -1,0 +1,64 @@
+Fernando Camacho Ospina
+Innovative and creative, with extensive experience in data-based product development. Strong statistical knowledge, excellent mathematical modelling, and great programming skills. Leader in the creation and application of state of the art solutions in industrial and government environments. With a multi-cultural background, multi-disciplinary knowledge, the strictness of academia, a clear understanding of customer needs, and great management skills, I have led, and worked hands-on, in many different projects, like the design of an ultra-light electric vehicle, the implementation of a complete telemedicine system in The Republic of Sudan, the full restructuring of live class delivery in an on-line education platform, or an Award-winning digital marketing project, among others. Great team leader and collaborator. Fluent in Spanish, English, and German.
+PROFESSIONAL EXPERIENCE
+	OPEN ENGLISH		Bogotá, Colombia
+As of Jan. 2018	Senior Education Data Analyst: Data analytics applied to the enhancement of learning quality, efficiency and experience. Integration of business intelligence, education, and human behavior to optimize business performance and customer value proposition. Work with MSSQL, Java, Python, SpotFire.
+	A 30% cost reduction was achieved, with the successful implementation a new live classes delivery method. I proposed the idea and I lead a multidisciplinary team to simulate the different scenarios and to execute the project as well as to create a continuous improvement cycle based on internal KPIs.
+	UNIVERSIDAD DE LA SABANA	Chía, Colombia
+Aug. 2014 – Dec. 2017	Research: Human Centered Design. Behavioral models using Big Data. Professor in the Management Engineering Masters, Business Intelligence and Probability and Statistics. 
+	I developed an Education Analytics platform in response to the needs I found in the complex learning environment, in which the traditional approach, although well established, lacks the power of current individualized analytics and metrics-driven feedback. The key element for the success of this platform was to be close to the final stack-holders (Teachers, students, and university management) for a full understanding of their requirements, and a well-defined adoption plan.
+	INDEPENDENT CONSULTANT	Bogotá, Colombia
+Jun. 2009 – April 2014	Woobsing S.A.S.: Innovation and new developments consultant.
+	A national innovation award winner SEO Long tail system was one of our products in a fast-evolving list of products aimed to maintain customer satisfaction and fidelity. Our products were designed and adjusted based on a constant interaction and understanding of our customers’ KPIs. In addition, for their adoption we created a constant training and education process to familiarize our customers with new technologies and different disruptive solutions.
+	
+Aug. 2010 – Jul 2013	Emoxional S.A.S.: Applied neuroscience to business: Market analysis, working environment and human behavior.
+	Due to the complexity of our product, a neuroscience marketing analysis tool, interactions with customers required a high-level technical profile with good understanding of customer needs. I lead the sales and marketing team, helping customers adopt this technology and successfully apply it to their own needs.
+
+2009 - 2010	Red I5 S.A.S.: General Manager. Development of real estate valuation tool. 
+	I lead the development of a Real Estate data analysis system to evaluate pricing and demand with a data-driven approach, a need in the Colombian market. The tool was adopted by real estate agents that we organized as working teams to promote the adoption of the tool in the market.
+
+2007 - 2008	Electric Vehicle: Eco-Citi S.A.: Project director. 
+	I implemented an information system to fully analyze and track the design and implementation of an ultra-light electric vehicle. In this project I had to oversee the optimization of the production line as well as the analysis of the vehicle performance.
+
+	UNIVERSIDAD DE LOS ANDES 	Bogotá, Colombia
+2006 – 2007	Research: Statistical methods, telemedicine.
+ 	Lecturer in Optimization, Statistics, Instrumentation, Medical Instruments.
+	The vast experience as a researcher and university professor have helped me in strengthening my analytical and data-driven approach to problems, keep a highly organized working methodology and be creative and resourceful in very complex and uncertain situations.
+
+	AMD Telemedicine		Lowell, MA, U.S.A.
+2000 – 2005	International Account Manager. Sales and marketing.  
+	A complete telemedicine system in the Republic of Sudan, in four regional cities and the capital, Karthoum, was one of many worldwide telemedicine projects I implement. I started by contacting international health organizations, local countries’ authorities, and local system integrators, to gain a deep understanding our customer’s needs. I provided the required information to all stakeholders to orchestrate the final implementation and I become a trusted advisor to our customer. In addition to analyze the project’s financial value we also estimate its social benefit. I followed this opportunity from its conception all the way to its final implementation, when flew to each of the selected locations to oversee the actual starting of the project.
+	DISEÑO INFORMATICO Ltda. 	Bogotá, Colombia
+1992 - 1996	Senior Partner. Consultant in factory floor control systems. Value-added reseller of Auto ID
+	and automation systems.
+	As the leader of the introduction of National Instruments to Colombia, I have to establish a sales and marketing team and a support team, that was able to support and maintain the rapid and successful expansion of the brand. Our list of customers went from the most prestigious universities to government institutions, and to some of the top manufacturing companies in the country.
+EDUCATION
+	UNIVERSITY OF NEW SOUTH WALES 	Sydney, Australia
+2002 – 2005	PhD: Statistical Analysis of Central Aortic Blood Pressure Parameters Derived From the Peripheral Pulse.
+1996 - 1998	Master of Biomedical Engineering.
+	Thesis: Development of a Prototype Hollow Fiber Bioreactor System
+	UNIVERSITY OF THE ANDES	Bogotá, Colombia
+July 99– June 2000	Research: Technical and Medical Resources Optimization for Delivery of Health Services for Difficult Access Communities: Telemedicine Evaluation Model.
+1992 - 1993	Graduate Studies in Industrial Process Automation. (First of the class.)
+	Thesis: Process Control Education Software.
+1986 - 1991	Electrical and Electronic Engineering. Major in Computer Electronics. (Top 5%) Thesis: Holter equipment development and implementation.
+	COLEGIO ANDINO-DEUTSCHE SCHULE (German School)	Bogotá, Colombia
+1974 - 1985	Elementary and High School. Major in science and mathematics. German Language Certificate.
+	AEROCLUB DE COLOMBIA 	Bogotá, Colombia
+Nov. 91 - Dec. 93	Private Pilot.- Glider Instructor.
+
+SELECTED PUBLICATIONS
+Zwerg-Villegas, A. M., Bernal-Torres, C. A., Thoene, U., Camacho, F., Guzmán-Ibarra, L. E., & Torralba-Chávez, E. (2022). The Relationship between Human Resource Diversity, Innovation Activity and Internationalization Intensity in Colombian and Mexican Firms. Global Business Review, 0(0). https://doi.org/10.1177/09721509221129680
+Carlos E. Blanco-Valbuena, César A. Bernal-Torres, Fernando Camacho, Miguel Díaz-Olaya. Creative and Cultural Industries: Study from the Knowledge Management Approach. Información tecnológica. vol.29 no.3 La Serena jun. 2018
+F. Camacho, A.P. Avolio, The use of central aortic pressure for determination of cardiovascular risk - effect of heart rate. Poster. 16th Scientific Meeting of the European Society of Hypertension, Madrid, Spain, 12-15th Junes 2006.
+A. Lauto, J. Hook, M. Doran, F. Camacho, L.A. Pool-Warren, A. Avolio, L. J. R. Foster. Chitosan Adhesive for Laser Tissue Repair: In Vitro Characterization. Lasers in Surgery and Medicine 36:193-201 (2005)
+F. Camacho, A. Walsh, A. Avolio, Principal Components Analysis for Characterisation of the Arterial Pressure Pulse. Poster. 15th Scientific Meeting of the European Society of Hypertension, Milan, Italy, 17-21th Junes 2005.
+F. Camacho, A. Avolio, N. H. Lovell. Estimation Of Pressure Pulse Amplification Between Aorta And Brachial Artery using stepwise multiple regression method. Physilogical Measurement. 25 (2004) 879-889
+Metin Akay (Editor).  Nonlinear Biomedical Signal Processing: Dynamic Analysis and Modeling. IEEE Press Series in Biomedical Engineering. 2001
+A. Qasem, A. Avolio, F. Camacho, T. Stephans, G. Frangakis. A New Technique for Non-invasive Assessment of Aortic Pressure Modulations during Treadmill Running. Euriscon June 22-25, 1998. Athens, Greece.
+PERSONAL
+Languages	Fluent in Spanish (Mother tongue), English (C2) and German (C1). French basics.
+Hobbies	Flying, photography, foreign languages and cultures.
+Interests	Technology, data acquisition and analysis. Education. Foreign and own culture and society. Human body and mind. Mathematics.
+
+Colombian and Australian nationalities. Married. Private pilot and glider instructor. Athlete, diver, swimmer

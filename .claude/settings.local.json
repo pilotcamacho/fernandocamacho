@@ -12,7 +12,8 @@
       "Bash(Sort-Object)",
       "Bash(xargs ls -la)",
       "Bash(grep -E \"^\\\\./[^/]+/?$|^\\\\./[^/]+/[^/]+/?$|^\\\\./[^/]+/[^/]+/[^/]+/?$\")",
-      "PowerShell(npm *)"
+      "PowerShell(npm *)",
+      "Bash(npx next *)"
     ]
   }
 }

@@ -85,6 +85,7 @@ const schema = a.schema({
       readAt:  a.datetime(),
     })
     .authorization((allow) => [
+      allow.publicApiKey().to(['create']),
       allow.groups(['Admin']),
     ]),
 

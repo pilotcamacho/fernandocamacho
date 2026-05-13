@@ -5,7 +5,7 @@ export interface PublicationItem {
   venue: string;
   year: number;
   doi?: string;
-  s3PdfKey?: string;
+  pdfPath?: string;
   order: number;
 }
 
@@ -19,6 +19,7 @@ export const publications: PublicationItem[] = [
     venue: 'Global Business Review',
     year: 2022,
     doi: '10.1177/09721509221129680',
+    pdfPath: '/publications/pub-2022-diversity-innovation.pdf',
     order: 1,
   },
   {
@@ -39,6 +40,7 @@ export const publications: PublicationItem[] = [
     venue:
       '16th Scientific Meeting of the European Society of Hypertension, Madrid, Spain (Poster)',
     year: 2006,
+    pdfPath: '/publications/pub-2006-aortic-pressure-esh.pdf',
     order: 3,
   },
   {
@@ -48,6 +50,7 @@ export const publications: PublicationItem[] = [
     title: 'Chitosan Adhesive for Laser Tissue Repair: In Vitro Characterization',
     venue: 'Lasers in Surgery and Medicine, 36, 193–201',
     year: 2005,
+    pdfPath: '/publications/pub-2005-chitosan-laser.pdf',
     order: 4,
   },
   {
@@ -67,6 +70,7 @@ export const publications: PublicationItem[] = [
       'Estimation of Pressure Pulse Amplification Between Aorta and Brachial Artery using Stepwise Multiple Regression Method',
     venue: 'Physiological Measurement, 25, 879–889',
     year: 2004,
+    pdfPath: '/publications/pub-2004-physiological-measurement.pdf',
     order: 6,
   },
   {

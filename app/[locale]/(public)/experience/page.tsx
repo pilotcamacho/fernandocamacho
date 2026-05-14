@@ -1,29 +1,31 @@
 import type { Metadata } from 'next';
-import { setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { experience } from '@/lib/data/experience';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { Card } from '@/components/ui/Card';
 
-export const metadata: Metadata = {
-  title: 'Experiencia — Fernando Camacho',
-  description: '25+ años en EdTech, salud, consultoría y tecnología',
-};
-
 type Props = { params: Promise<{ locale: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'experience' });
+  return {
+    title: t('metaTitle'),
+    description: t('metaDescription'),
+  };
+}
 
 export default async function ExperiencePage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations('experience');
 
   const sorted = [...experience].sort((a, b) => a.order - b.order);
 
   return (
     <main className="py-12 px-4 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-3xl">
-        <SectionHeader
-          title="Experiencia"
-          subtitle="25+ años en EdTech, salud, consultoría y tecnología"
-        />
+        <SectionHeader title={t('title')} subtitle={t('subtitle')} />
 
         <div className="space-y-6">
           {sorted.map((exp) => (
@@ -37,7 +39,7 @@ export default async function ExperiencePage({ params }: Props) {
                   <p className="mt-0.5 text-xs text-text-muted">{exp.location}</p>
                 </div>
                 <span className="shrink-0 font-mono text-xs text-text-muted">
-                  {exp.startDate} — {exp.endDate ?? 'Presente'}
+                  {exp.startDate} — {exp.endDate ?? t('present')}
                 </span>
               </div>
 

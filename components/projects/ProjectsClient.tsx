@@ -1,16 +1,18 @@
 'use client';
+
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import type { ProjectItem } from '@/lib/data/projects';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { cn } from '@/lib/utils/cn';
 
-type Decade = 'Todos' | '2020s' | '2010s' | '2000s' | '1990s';
+type DecadeKey = 'all' | '2020s' | '2010s' | '2000s' | '1990s';
 
-const DECADES: Decade[] = ['Todos', '2020s', '2010s', '2000s', '1990s'];
+const DECADE_KEYS: DecadeKey[] = ['all', '2020s', '2010s', '2000s', '1990s'];
 
-function matchesDecade(date: string, decade: Decade): boolean {
-  if (decade === 'Todos') return true;
+function matchesDecade(date: string, decade: DecadeKey): boolean {
+  if (decade === 'all') return true;
   const year = parseInt(date, 10);
   if (decade === '2020s') return year >= 2020;
   if (decade === '2010s') return year >= 2010 && year < 2020;
@@ -24,24 +26,25 @@ interface ProjectsClientProps {
 }
 
 export function ProjectsClient({ projects }: ProjectsClientProps) {
-  const [active, setActive] = useState<Decade>('Todos');
+  const t = useTranslations('projects');
+  const [active, setActive] = useState<DecadeKey>('all');
   const filtered = projects.filter((p) => matchesDecade(p.date, active));
 
   return (
     <div>
       <div className="flex flex-wrap gap-2 mb-8">
-        {DECADES.map((d) => (
+        {DECADE_KEYS.map((key) => (
           <button
-            key={d}
-            onClick={() => setActive(d)}
+            key={key}
+            onClick={() => setActive(key)}
             className={cn(
               'rounded-full px-4 py-1.5 text-sm font-medium transition-colors',
-              d === active
+              key === active
                 ? 'bg-primary-600 text-white'
                 : 'bg-surface border border-border text-text-secondary hover:border-primary-400 hover:text-primary-600 dark:hover:text-primary-400'
             )}
           >
-            {d}
+            {key === 'all' ? t('allDecades') : key}
           </button>
         ))}
       </div>
@@ -73,8 +76,9 @@ export function ProjectsClient({ projects }: ProjectsClientProps) {
       </div>
 
       <p className="mt-6 text-sm text-text-muted">
-        {filtered.length} proyecto{filtered.length !== 1 ? 's' : ''}
-        {active !== 'Todos' ? ` — ${active}` : ' en total'}
+        {active === 'all'
+          ? t('count', { count: filtered.length })
+          : t('countFiltered', { count: filtered.length, decade: active })}
       </p>
     </div>
   );

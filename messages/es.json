@@ -1,1 +1,109 @@
-{}
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Sobre mí",
+    "experience": "Experiencia",
+    "projects": "Proyectos",
+    "education": "Educación",
+    "publications": "Publicaciones",
+    "awards": "Premios",
+    "book": "Libro",
+    "contact": "Contacto",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
+    "toggleTheme": "Cambiar tema"
+  },
+  "footer": {
+    "copyright": "© {year} Fernando Camacho Ospina. Todos los derechos reservados."
+  },
+  "bio": {
+    "readMore": "Leer más ↓",
+    "readLess": "Leer menos ↑"
+  },
+  "home": {
+    "metaTitle": "Fernando Camacho — PhD Data Scientist · Ingeniero · Autor · Piloto Privado",
+    "metaDescription": "PhD en Estadística Aplicada a la Ingeniería Biomédica con más de 25 años de experiencia en desarrollo de productos basados en datos, inteligencia artificial y análisis del comportamiento humano."
+  },
+  "about": {
+    "title": "Sobre mí",
+    "metaTitle": "Sobre mí — Fernando Camacho",
+    "metaDescription": "PhD en Estadística Aplicada a la Ingeniería Biomédica con más de 25 años de experiencia en desarrollo de productos basados en datos, inteligencia artificial y análisis del comportamiento humano.",
+    "languages": "Idiomas",
+    "interests": "Intereses",
+    "location": "Ubicación",
+    "nationalities": "Nacionalidades",
+    "contact": "Contacto"
+  },
+  "experience": {
+    "title": "Experiencia",
+    "subtitle": "25+ años en EdTech, salud, consultoría y tecnología",
+    "metaTitle": "Experiencia — Fernando Camacho",
+    "metaDescription": "25+ años en EdTech, salud, consultoría y tecnología",
+    "present": "Presente"
+  },
+  "projects": {
+    "title": "Proyectos",
+    "subtitle": "20+ proyectos desde 1991 hasta el presente",
+    "metaTitle": "Proyectos — Fernando Camacho",
+    "metaDescription": "20+ proyectos desde 1991 hasta el presente en EdTech, salud, tecnología e innovación",
+    "allDecades": "Todos",
+    "count": "{count, plural, =1 {1 proyecto en total} other {{count} proyectos en total}}",
+    "countFiltered": "{count, plural, =1 {1 proyecto — {decade}} other {{count} proyectos — {decade}}}"
+  },
+  "education": {
+    "title": "Educación",
+    "subtitle": "PhD, Maestría, Ingeniería y más en tres continentes",
+    "metaTitle": "Educación — Fernando Camacho",
+    "metaDescription": "PhD, Maestría, Ingeniería y más en tres continentes",
+    "thesis": "Tesis",
+    "certifications": "Certificaciones"
+  },
+  "publications": {
+    "title": "Publicaciones",
+    "subtitle": "Artículos académicos y presentaciones internacionales",
+    "metaTitle": "Publicaciones — Fernando Camacho",
+    "metaDescription": "Artículos académicos y presentaciones internacionales en bioingeniería e innovación",
+    "downloadPdf": "Descargar PDF"
+  },
+  "awards": {
+    "title": "Premios y Becas",
+    "subtitle": "Reconocimientos nacionales e internacionales",
+    "metaTitle": "Premios y Becas — Fernando Camacho",
+    "metaDescription": "Reconocimientos nacionales e internacionales en innovación y academia"
+  },
+  "book": {
+    "title": "Propiología",
+    "subtitle": "Mi libro — disponible en Kindle",
+    "metaTitle": "Propiología — Fernando Camacho",
+    "metaDescription": "Propiología: una exploración transdisciplinaria del concepto de la propiedad como fenómeno humano. Disponible en Kindle.",
+    "bookTitle": "Propiología: La ciencia de lo propio",
+    "synopsis1": "Propiología es una exploración transdisciplinaria del concepto de la propiedad — no solo en el sentido legal y económico, sino como fenómeno humano profundo que atraviesa la identidad, la cultura, la biología y la organización social.",
+    "synopsis2": "El libro propone un marco teórico original para entender cómo la apropiación de objetos, ideas y territorios ha dado forma a la civilización humana, y cómo este impulso sigue siendo una fuerza fundamental en la sociedad contemporánea.",
+    "synopsis3": "Escrito con rigor académico y accesibilidad narrativa, Propiología combina perspectivas de la economía, la psicología, la filosofía, la antropología y la neurociencia para ofrecer una visión integrada y novedosa del concepto de lo propio.",
+    "viewOnKindle": "Ver en Kindle →",
+    "aboutAuthor": "Sobre el autor",
+    "authorBio": "Fernando Camacho Ospina es PhD en Estadística Aplicada a la Ingeniería Biomédica (UNSW Sydney) con más de 25 años de experiencia en proyectos de innovación, análisis de datos e investigación. Colombo-australiano, piloto privado y apasionado por la intersección de la tecnología, la cultura y el pensamiento humano."
+  },
+  "contact": {
+    "title": "Contacto",
+    "subtitle": "Escríbeme, con gusto respondo",
+    "metaTitle": "Contacto — Fernando Camacho",
+    "directEmail": "También puedes escribirme directamente a",
+    "nameLbl": "Nombre",
+    "emailLbl": "Email",
+    "subjectLbl": "Asunto",
+    "messageLbl": "Mensaje",
+    "namePlaceholder": "Tu nombre",
+    "emailPlaceholder": "tu@email.com",
+    "subjectPlaceholder": "Motivo del contacto",
+    "messagePlaceholder": "Escribe tu mensaje aquí...",
+    "send": "Enviar mensaje",
+    "sending": "Enviando…",
+    "successTitle": "¡Mensaje enviado con éxito!",
+    "successText": "Me comunicaré contigo pronto.",
+    "errorText": "Ocurrió un error al enviar. Por favor intenta de nuevo.",
+    "nameRequired": "Nombre es requerido",
+    "emailInvalid": "Email inválido",
+    "messageTooShort": "Mensaje muy corto (mínimo 10 caracteres)"
+  }
+}

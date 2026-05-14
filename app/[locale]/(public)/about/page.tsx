@@ -1,29 +1,33 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import { setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { settings } from '@/lib/data/settings';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { Card } from '@/components/ui/Card';
 
-export const metadata: Metadata = {
-  title: 'Sobre mí — Fernando Camacho',
-  description: settings.bioBrief,
-};
-
 type Props = { params: Promise<{ locale: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'about' });
+  return {
+    title: t('metaTitle'),
+    description: t('metaDescription'),
+  };
+}
 
 export default async function AboutPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations('about');
 
   const paragraphs = settings.bioFull.split('\n\n');
 
   return (
     <main className="py-12 px-4 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-3xl">
-        <SectionHeader title="Sobre mí" subtitle={settings.tagline} />
+        <SectionHeader title={t('title')} subtitle={settings.tagline} />
 
-        {/* Photo + bio */}
         <Card className="mb-8">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:gap-8">
             <div className="shrink-0">
@@ -45,11 +49,10 @@ export default async function AboutPage({ params }: Props) {
           </div>
         </Card>
 
-        {/* Idiomas e Intereses */}
         <div className="mb-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
           <Card>
             <h2 className="mb-4 text-xs font-semibold uppercase tracking-wider text-text-muted">
-              Idiomas
+              {t('languages')}
             </h2>
             <ul className="space-y-2.5">
               {settings.languages.map(({ lang, level }) => (
@@ -63,7 +66,7 @@ export default async function AboutPage({ params }: Props) {
 
           <Card>
             <h2 className="mb-4 text-xs font-semibold uppercase tracking-wider text-text-muted">
-              Intereses
+              {t('interests')}
             </h2>
             <div className="flex flex-wrap gap-2">
               {settings.hobbies.map((h) => (
@@ -78,24 +81,23 @@ export default async function AboutPage({ params }: Props) {
           </Card>
         </div>
 
-        {/* Datos personales */}
         <Card>
           <dl className="grid grid-cols-1 gap-4 sm:grid-cols-3">
             <div>
               <dt className="text-xs font-medium uppercase tracking-wide text-text-muted">
-                Ubicación
+                {t('location')}
               </dt>
               <dd className="mt-1 text-sm text-text-primary">{settings.location}</dd>
             </div>
             <div>
               <dt className="text-xs font-medium uppercase tracking-wide text-text-muted">
-                Nacionalidades
+                {t('nationalities')}
               </dt>
               <dd className="mt-1 text-sm text-text-primary">{settings.nationalities}</dd>
             </div>
             <div>
               <dt className="text-xs font-medium uppercase tracking-wide text-text-muted">
-                Contacto
+                {t('contact')}
               </dt>
               <dd className="mt-1 text-sm">
                 <a

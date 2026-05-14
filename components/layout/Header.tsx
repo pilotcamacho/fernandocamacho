@@ -1,31 +1,32 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { usePathname, Link } from '@/i18n/routing';
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils/cn';
 
-const navLinks = [
-  { href: '/',             label: 'Inicio' },
-  { href: '/about',        label: 'Sobre mí' },
-  { href: '/experience',   label: 'Experiencia' },
-  { href: '/projects',     label: 'Proyectos' },
-  { href: '/education',    label: 'Educación' },
-  { href: '/publications', label: 'Publicaciones' },
-  { href: '/awards',       label: 'Premios' },
-  { href: '/book',         label: 'Libro' },
-  { href: '/contact',      label: 'Contacto' },
-];
-
 export default function Header() {
+  const t = useTranslations('nav');
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [dark, setDark] = useState(false);
+
+  const navLinks = [
+    { href: '/',             label: t('home') },
+    { href: '/about',        label: t('about') },
+    { href: '/experience',   label: t('experience') },
+    { href: '/projects',     label: t('projects') },
+    { href: '/education',    label: t('education') },
+    { href: '/publications', label: t('publications') },
+    { href: '/awards',       label: t('awards') },
+    { href: '/book',         label: t('book') },
+    { href: '/contact',      label: t('contact') },
+  ] as const;
 
   useEffect(() => {
     setDark(document.documentElement.classList.contains('dark'));
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setMenuOpen(false);
   }, [pathname]);
@@ -45,7 +46,6 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border bg-surface/95 backdrop-blur-sm">
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
 
-        {/* Logo */}
         <Link
           href="/"
           className="flex-shrink-0 text-sm font-bold tracking-wide text-primary-700 dark:text-primary-400 hover:text-primary-600 transition-colors"
@@ -53,8 +53,7 @@ export default function Header() {
           Fernando Camacho
         </Link>
 
-        {/* Desktop nav */}
-        <nav className="hidden lg:flex items-center gap-0.5" aria-label="Navegación principal">
+        <nav className="hidden lg:flex items-center gap-0.5" aria-label={t('home')}>
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -71,11 +70,10 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* Right controls */}
         <div className="flex items-center gap-1">
           <button
             onClick={toggleTheme}
-            aria-label="Cambiar tema"
+            aria-label={t('toggleTheme')}
             className="rounded-md p-2 text-text-muted hover:bg-surface-muted hover:text-text-primary dark:hover:bg-neutral-800 transition-colors"
           >
             {dark ? <SunIcon /> : <MoonIcon />}
@@ -83,7 +81,7 @@ export default function Header() {
 
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
+            aria-label={menuOpen ? t('closeMenu') : t('openMenu')}
             aria-expanded={menuOpen}
             className="lg:hidden rounded-md p-2 text-text-muted hover:bg-surface-muted hover:text-text-primary dark:hover:bg-neutral-800 transition-colors"
           >
@@ -92,10 +90,9 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile menu */}
       {menuOpen && (
         <div className="lg:hidden border-t border-border bg-surface">
-          <nav className="flex flex-col gap-1 px-4 py-3" aria-label="Menú móvil">
+          <nav className="flex flex-col gap-1 px-4 py-3">
             {navLinks.map((link) => (
               <Link
                 key={link.href}

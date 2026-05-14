@@ -1,1 +1,109 @@
-{}
+{
+  "nav": {
+    "home": "Startseite",
+    "about": "Über mich",
+    "experience": "Erfahrung",
+    "projects": "Projekte",
+    "education": "Ausbildung",
+    "publications": "Publikationen",
+    "awards": "Auszeichnungen",
+    "book": "Buch",
+    "contact": "Kontakt",
+    "openMenu": "Menü öffnen",
+    "closeMenu": "Menü schließen",
+    "toggleTheme": "Design wechseln"
+  },
+  "footer": {
+    "copyright": "© {year} Fernando Camacho Ospina. Alle Rechte vorbehalten."
+  },
+  "bio": {
+    "readMore": "Mehr lesen ↓",
+    "readLess": "Weniger lesen ↑"
+  },
+  "home": {
+    "metaTitle": "Fernando Camacho — PhD Datenwissenschaftler · Ingenieur · Autor · Privatpilot",
+    "metaDescription": "Promotion in Angewandter Statistik in der Biomedizintechnik mit 25+ Jahren Erfahrung in datengetriebener Produktentwicklung, KI und Verhaltensanalyse."
+  },
+  "about": {
+    "title": "Über mich",
+    "metaTitle": "Über mich — Fernando Camacho",
+    "metaDescription": "Promotion in Angewandter Statistik in der Biomedizintechnik mit 25+ Jahren Erfahrung in datengetriebener Produktentwicklung, KI und Verhaltensanalyse.",
+    "languages": "Sprachen",
+    "interests": "Interessen",
+    "location": "Standort",
+    "nationalities": "Staatsangehörigkeiten",
+    "contact": "Kontakt"
+  },
+  "experience": {
+    "title": "Erfahrung",
+    "subtitle": "25+ Jahre in EdTech, Gesundheitswesen, Beratung und Technologie",
+    "metaTitle": "Erfahrung — Fernando Camacho",
+    "metaDescription": "25+ Jahre in EdTech, Gesundheitswesen, Beratung und Technologie",
+    "present": "Heute"
+  },
+  "projects": {
+    "title": "Projekte",
+    "subtitle": "20+ Projekte von 1991 bis heute",
+    "metaTitle": "Projekte — Fernando Camacho",
+    "metaDescription": "20+ Projekte von 1991 bis heute in EdTech, Gesundheitswesen, Technologie und Innovation",
+    "allDecades": "Alle",
+    "count": "{count, plural, =1 {1 Projekt insgesamt} other {{count} Projekte insgesamt}}",
+    "countFiltered": "{count, plural, =1 {1 Projekt — {decade}} other {{count} Projekte — {decade}}}"
+  },
+  "education": {
+    "title": "Ausbildung",
+    "subtitle": "Promotion, Master, Ingenieurwesen und mehr auf drei Kontinenten",
+    "metaTitle": "Ausbildung — Fernando Camacho",
+    "metaDescription": "Promotion, Master, Ingenieurwesen und mehr auf drei Kontinenten",
+    "thesis": "Dissertation",
+    "certifications": "Zertifizierungen"
+  },
+  "publications": {
+    "title": "Publikationen",
+    "subtitle": "Wissenschaftliche Artikel und internationale Präsentationen",
+    "metaTitle": "Publikationen — Fernando Camacho",
+    "metaDescription": "Wissenschaftliche Artikel und internationale Präsentationen in Bioingenieurwesen und Innovation",
+    "downloadPdf": "PDF herunterladen"
+  },
+  "awards": {
+    "title": "Auszeichnungen & Stipendien",
+    "subtitle": "Nationale und internationale Anerkennung",
+    "metaTitle": "Auszeichnungen & Stipendien — Fernando Camacho",
+    "metaDescription": "Nationale und internationale Anerkennung in Innovation und Wissenschaft"
+  },
+  "book": {
+    "title": "Propiología",
+    "subtitle": "Mein Buch — auf Kindle erhältlich",
+    "metaTitle": "Propiología — Fernando Camacho",
+    "metaDescription": "Propiología: eine transdisziplinäre Erkundung des Eigentumsbegriffs als menschliches Phänomen. Auf Kindle erhältlich.",
+    "bookTitle": "Propiología: Die Wissenschaft des Eigenen",
+    "synopsis1": "Propiología ist eine transdisziplinäre Erkundung des Eigentumsbegriffs — nicht nur im rechtlichen und wirtschaftlichen Sinne, sondern als tiefes menschliches Phänomen, das Identität, Kultur, Biologie und soziale Organisation durchzieht.",
+    "synopsis2": "Das Buch schlägt einen originellen theoretischen Rahmen vor, um zu verstehen, wie die Aneignung von Objekten, Ideen und Territorien die menschliche Zivilisation geprägt hat und wie dieser Impuls eine grundlegende Kraft in der zeitgenössischen Gesellschaft bleibt.",
+    "synopsis3": "Mit akademischer Strenge und narrativer Zugänglichkeit geschrieben, kombiniert Propiología Perspektiven aus Wirtschaft, Psychologie, Philosophie, Anthropologie und Neurowissenschaften, um eine integrierte und neuartige Vision des Konzepts des Eigenen zu bieten.",
+    "viewOnKindle": "Auf Kindle ansehen →",
+    "aboutAuthor": "Über den Autor",
+    "authorBio": "Fernando Camacho Ospina hat einen Doktortitel in Angewandter Statistik in der Biomedizintechnik (UNSW Sydney) und verfügt über mehr als 25 Jahre Erfahrung in Innovationsprojekten, Datenanalyse und Forschung. Kolumbianisch-australischer Privatpilot mit Leidenschaft für die Schnittstelle von Technologie, Kultur und menschlichem Denken."
+  },
+  "contact": {
+    "title": "Kontakt",
+    "subtitle": "Schreib mir, ich antworte gerne",
+    "metaTitle": "Kontakt — Fernando Camacho",
+    "directEmail": "Sie können mir auch direkt schreiben an",
+    "nameLbl": "Name",
+    "emailLbl": "E-Mail",
+    "subjectLbl": "Betreff",
+    "messageLbl": "Nachricht",
+    "namePlaceholder": "Ihr Name",
+    "emailPlaceholder": "sie@email.com",
+    "subjectPlaceholder": "Betreff der Nachricht",
+    "messagePlaceholder": "Schreiben Sie Ihre Nachricht hier...",
+    "send": "Nachricht senden",
+    "sending": "Wird gesendet…",
+    "successTitle": "Nachricht gesendet!",
+    "successText": "Danke für Ihre Nachricht. Ich melde mich bald bei Ihnen.",
+    "errorText": "Beim Senden der Nachricht ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
+    "nameRequired": "Name ist erforderlich",
+    "emailInvalid": "Ungültige E-Mail-Adresse",
+    "messageTooShort": "Nachricht zu kurz (mindestens 10 Zeichen)"
+  }
+}

@@ -1,29 +1,31 @@
 import type { Metadata } from 'next';
-import { setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { publications } from '@/lib/data/publications';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { Card } from '@/components/ui/Card';
 
-export const metadata: Metadata = {
-  title: 'Publicaciones — Fernando Camacho',
-  description: 'Artículos académicos y presentaciones internacionales en bioingeniería e innovación',
-};
-
 type Props = { params: Promise<{ locale: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'publications' });
+  return {
+    title: t('metaTitle'),
+    description: t('metaDescription'),
+  };
+}
 
 export default async function PublicationsPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations('publications');
 
   const sorted = [...publications].sort((a, b) => a.order - b.order);
 
   return (
     <main className="py-12 px-4 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-3xl">
-        <SectionHeader
-          title="Publicaciones"
-          subtitle="Artículos académicos y presentaciones internacionales"
-        />
+        <SectionHeader title={t('title')} subtitle={t('subtitle')} />
 
         <div className="space-y-5">
           {sorted.map((pub, i) => (
@@ -61,7 +63,7 @@ export default async function PublicationsPage({ params }: Props) {
                           <polyline points="7 10 12 15 17 10" />
                           <line x1="12" y1="15" x2="12" y2="3" />
                         </svg>
-                        Descargar PDF
+                        {t('downloadPdf')}
                       </a>
                     )}
                   </div>

@@ -1,15 +1,21 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import { setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { education, certifications } from '@/lib/data/education';
 import type { DiplomaFile } from '@/lib/data/education';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { Card } from '@/components/ui/Card';
 
-export const metadata: Metadata = {
-  title: 'Educación — Fernando Camacho',
-  description: 'PhD, Maestría, Ingeniería y más en tres continentes',
-};
+type Props = { params: Promise<{ locale: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'education' });
+  return {
+    title: t('metaTitle'),
+    description: t('metaDescription'),
+  };
+}
 
 function DiplomaLinks({ files }: { files: DiplomaFile[] }) {
   return (
@@ -46,11 +52,10 @@ function DiplomaLinks({ files }: { files: DiplomaFile[] }) {
   );
 }
 
-type Props = { params: Promise<{ locale: string }> };
-
 export default async function EducationPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations('education');
 
   const sortedEdu   = [...education].sort((a, b) => a.order - b.order);
   const sortedCerts = [...certifications].sort((a, b) => a.order - b.order);
@@ -58,10 +63,7 @@ export default async function EducationPage({ params }: Props) {
   return (
     <main className="py-12 px-4 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-3xl">
-        <SectionHeader
-          title="Educación"
-          subtitle="PhD, Maestría, Ingeniería y más en tres continentes"
-        />
+        <SectionHeader title={t('title')} subtitle={t('subtitle')} />
 
         <div className="space-y-5">
           {sortedEdu.map((edu) => (
@@ -85,7 +87,7 @@ export default async function EducationPage({ params }: Props) {
 
               {edu.thesis && (
                 <p className="mt-3 border-l-2 border-primary-200 pl-3 text-xs italic text-text-muted dark:border-primary-800">
-                  Tesis: {edu.thesis}
+                  {t('thesis')}: {edu.thesis}
                 </p>
               )}
 
@@ -102,8 +104,7 @@ export default async function EducationPage({ params }: Props) {
           ))}
         </div>
 
-        {/* Certifications */}
-        <h2 className="mt-12 mb-5 text-xl font-bold text-text-primary">Certificaciones</h2>
+        <h2 className="mt-12 mb-5 text-xl font-bold text-text-primary">{t('certifications')}</h2>
         <div className="space-y-4">
           {sortedCerts.map((cert) => (
             <Card key={cert.id}>

@@ -1,5 +1,7 @@
 'use client';
+
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 interface BioToggleProps {
   brief: string;
@@ -7,6 +9,7 @@ interface BioToggleProps {
 }
 
 export function BioToggle({ brief, full }: BioToggleProps) {
+  const t = useTranslations('bio');
   const [expanded, setExpanded] = useState(false);
   const paragraphs = full.split('\n\n');
 
@@ -27,7 +30,7 @@ export function BioToggle({ brief, full }: BioToggleProps) {
         onClick={() => setExpanded(!expanded)}
         className="mt-3 text-sm font-medium text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 transition-colors"
       >
-        {expanded ? 'Leer menos ↑' : 'Leer más ↓'}
+        {expanded ? t('readLess') : t('readMore')}
       </button>
     </div>
   );

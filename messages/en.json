@@ -1,1 +1,109 @@
-{}
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "experience": "Experience",
+    "projects": "Projects",
+    "education": "Education",
+    "publications": "Publications",
+    "awards": "Awards",
+    "book": "Book",
+    "contact": "Contact",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "toggleTheme": "Toggle theme"
+  },
+  "footer": {
+    "copyright": "© {year} Fernando Camacho Ospina. All rights reserved."
+  },
+  "bio": {
+    "readMore": "Read more ↓",
+    "readLess": "Read less ↑"
+  },
+  "home": {
+    "metaTitle": "Fernando Camacho — PhD Data Scientist · Engineer · Author · Private Pilot",
+    "metaDescription": "PhD in Applied Statistics in Biomedical Engineering with 25+ years of experience in data-driven product development, AI, and human behavior analytics."
+  },
+  "about": {
+    "title": "About",
+    "metaTitle": "About — Fernando Camacho",
+    "metaDescription": "PhD in Applied Statistics in Biomedical Engineering with 25+ years of experience in data-driven product development, AI, and human behavior analytics.",
+    "languages": "Languages",
+    "interests": "Interests",
+    "location": "Location",
+    "nationalities": "Nationalities",
+    "contact": "Contact"
+  },
+  "experience": {
+    "title": "Experience",
+    "subtitle": "25+ years in EdTech, healthcare, consulting and technology",
+    "metaTitle": "Experience — Fernando Camacho",
+    "metaDescription": "25+ years in EdTech, healthcare, consulting and technology",
+    "present": "Present"
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "20+ projects from 1991 to the present",
+    "metaTitle": "Projects — Fernando Camacho",
+    "metaDescription": "20+ projects from 1991 to the present in EdTech, healthcare, technology and innovation",
+    "allDecades": "All",
+    "count": "{count, plural, =1 {1 project in total} other {{count} projects in total}}",
+    "countFiltered": "{count, plural, =1 {1 project — {decade}} other {{count} projects — {decade}}}"
+  },
+  "education": {
+    "title": "Education",
+    "subtitle": "PhD, Master's, Engineering and more on three continents",
+    "metaTitle": "Education — Fernando Camacho",
+    "metaDescription": "PhD, Master's, Engineering and more on three continents",
+    "thesis": "Thesis",
+    "certifications": "Certifications"
+  },
+  "publications": {
+    "title": "Publications",
+    "subtitle": "Academic articles and international presentations",
+    "metaTitle": "Publications — Fernando Camacho",
+    "metaDescription": "Academic articles and international presentations in bioengineering and innovation",
+    "downloadPdf": "Download PDF"
+  },
+  "awards": {
+    "title": "Awards & Scholarships",
+    "subtitle": "National and international recognition",
+    "metaTitle": "Awards & Scholarships — Fernando Camacho",
+    "metaDescription": "National and international recognition in innovation and academia"
+  },
+  "book": {
+    "title": "Propiología",
+    "subtitle": "My book — available on Kindle",
+    "metaTitle": "Propiología — Fernando Camacho",
+    "metaDescription": "Propiología: a transdisciplinary exploration of the concept of property as a human phenomenon. Available on Kindle.",
+    "bookTitle": "Propiología: The Science of the Own",
+    "synopsis1": "Propiología is a transdisciplinary exploration of the concept of property — not only in the legal and economic sense, but as a deep human phenomenon that runs through identity, culture, biology and social organization.",
+    "synopsis2": "The book proposes an original theoretical framework for understanding how the appropriation of objects, ideas and territories has shaped human civilization, and how this impulse remains a fundamental force in contemporary society.",
+    "synopsis3": "Written with academic rigor and narrative accessibility, Propiología combines perspectives from economics, psychology, philosophy, anthropology and neuroscience to offer an integrated and novel vision of the concept of the own.",
+    "viewOnKindle": "View on Kindle →",
+    "aboutAuthor": "About the author",
+    "authorBio": "Fernando Camacho Ospina holds a PhD in Applied Statistics in Biomedical Engineering (UNSW Sydney) with over 25 years of experience in innovation projects, data analysis and research. Colombian-Australian, private pilot, and passionate about the intersection of technology, culture and human thought."
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Write to me, I'll be happy to respond",
+    "metaTitle": "Contact — Fernando Camacho",
+    "directEmail": "You can also write to me directly at",
+    "nameLbl": "Name",
+    "emailLbl": "Email",
+    "subjectLbl": "Subject",
+    "messageLbl": "Message",
+    "namePlaceholder": "Your name",
+    "emailPlaceholder": "you@email.com",
+    "subjectPlaceholder": "Reason for contact",
+    "messagePlaceholder": "Write your message here...",
+    "send": "Send message",
+    "sending": "Sending…",
+    "successTitle": "Message sent!",
+    "successText": "Thank you for writing to me. I'll get back to you soon.",
+    "errorText": "There was an error sending the message. Please try again.",
+    "nameRequired": "Name is required",
+    "emailInvalid": "Invalid email address",
+    "messageTooShort": "Message too short (minimum 10 characters)"
+  }
+}

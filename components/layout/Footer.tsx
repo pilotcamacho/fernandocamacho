@@ -2,7 +2,8 @@ import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/routing';
 
 export default async function Footer() {
-  const t = await getTranslations('footer');
+  const t    = await getTranslations('footer');
+  const tNav = await getTranslations('nav');
 
   return (
     <footer className="border-t border-border bg-surface-muted mt-auto">
@@ -17,7 +18,7 @@ export default async function Footer() {
               f.camacho@peopleart.co
             </a>
             <Link href="/contact" className="hover:text-primary-600 transition-colors">
-              Contacto
+              {tNav('contact')}
             </Link>
             <Link href="/book" className="hover:text-primary-600 transition-colors">
               Propiología

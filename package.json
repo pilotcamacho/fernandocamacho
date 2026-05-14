@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "overrides": {
-    "graphql": "15.10.2"
+    "graphql": "15.10.2",
+    "@swc/helpers": "^0.5.21"
   },
   "scripts": {
     "postinstall": "node scripts/patch-graphql.js && esbuild amplify/backend.ts amplify/auth/resource.ts amplify/data/resource.ts amplify/storage/resource.ts --format=esm --platform=node --outdir=amplify --out-extension:.js=.mjs && node scripts/patch-amplify-imports.js",

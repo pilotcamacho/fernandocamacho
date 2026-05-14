@@ -25,7 +25,9 @@
       "Bash(node *)",
       "Bash(Remove-Item *)",
       "Bash(npx tsc *)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Bash(npm --version)",
+      "Bash(npm view *)"
     ]
   }
 }

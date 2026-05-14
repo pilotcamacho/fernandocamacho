@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { settings } from '@/lib/data/settings';
+import { getSettings, type Locale } from '@/lib/data/settings';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { Card } from '@/components/ui/Card';
 
@@ -10,9 +10,10 @@ type Props = { params: Promise<{ locale: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'about' });
+  const s = getSettings(locale as Locale);
   return {
     title: t('metaTitle'),
-    description: t('metaDescription'),
+    description: s.bioBrief,
   };
 }
 
@@ -20,13 +21,14 @@ export default async function AboutPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations('about');
+  const s = getSettings(locale as Locale);
 
-  const paragraphs = settings.bioFull.split('\n\n');
+  const paragraphs = s.bioFull.split('\n\n');
 
   return (
     <main className="py-12 px-4 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-3xl">
-        <SectionHeader title={t('title')} subtitle={settings.tagline} />
+        <SectionHeader title={t('title')} subtitle={s.tagline} />
 
         <Card className="mb-8">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:gap-8">
@@ -55,7 +57,7 @@ export default async function AboutPage({ params }: Props) {
               {t('languages')}
             </h2>
             <ul className="space-y-2.5">
-              {settings.languages.map(({ lang, level }) => (
+              {s.languages.map(({ lang, level }) => (
                 <li key={lang} className="flex items-baseline justify-between">
                   <span className="text-sm font-medium text-text-primary">{lang}</span>
                   <span className="text-xs text-text-muted">{level}</span>
@@ -69,7 +71,7 @@ export default async function AboutPage({ params }: Props) {
               {t('interests')}
             </h2>
             <div className="flex flex-wrap gap-2">
-              {settings.hobbies.map((h) => (
+              {s.hobbies.map((h) => (
                 <span
                   key={h}
                   className="rounded-full border border-border px-3 py-1 text-xs text-text-secondary"
@@ -87,13 +89,13 @@ export default async function AboutPage({ params }: Props) {
               <dt className="text-xs font-medium uppercase tracking-wide text-text-muted">
                 {t('location')}
               </dt>
-              <dd className="mt-1 text-sm text-text-primary">{settings.location}</dd>
+              <dd className="mt-1 text-sm text-text-primary">{s.location}</dd>
             </div>
             <div>
               <dt className="text-xs font-medium uppercase tracking-wide text-text-muted">
                 {t('nationalities')}
               </dt>
-              <dd className="mt-1 text-sm text-text-primary">{settings.nationalities}</dd>
+              <dd className="mt-1 text-sm text-text-primary">{s.nationalities}</dd>
             </div>
             <div>
               <dt className="text-xs font-medium uppercase tracking-wide text-text-muted">
@@ -101,10 +103,10 @@ export default async function AboutPage({ params }: Props) {
               </dt>
               <dd className="mt-1 text-sm">
                 <a
-                  href={`mailto:${settings.email}`}
+                  href={`mailto:${s.email}`}
                   className="text-primary-600 hover:underline dark:text-primary-400"
                 >
-                  {settings.email}
+                  {s.email}
                 </a>
               </dd>
             </div>

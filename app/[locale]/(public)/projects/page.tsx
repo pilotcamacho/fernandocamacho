@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { projects } from '@/lib/data/projects';
+import { getProjects } from '@/lib/data/projects';
+import type { Locale } from '@/lib/data/settings';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { ProjectsClient } from '@/components/projects/ProjectsClient';
 
@@ -20,7 +21,7 @@ export default async function ProjectsPage({ params }: Props) {
   setRequestLocale(locale);
   const t = await getTranslations('projects');
 
-  const sorted = [...projects].sort((a, b) => a.order - b.order);
+  const sorted = [...getProjects(locale as Locale)].sort((a, b) => a.order - b.order);
 
   return (
     <main className="py-12 px-4 sm:px-6 lg:px-8">

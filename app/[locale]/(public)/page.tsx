@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/routing';
-import { settings } from '@/lib/data/settings';
+import { getSettings, type Locale } from '@/lib/data/settings';
 import { BioToggle } from '@/components/home/BioToggle';
 
 type Props = { params: Promise<{ locale: string }> };
@@ -10,15 +10,17 @@ type Props = { params: Promise<{ locale: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'home' });
+  const s = getSettings(locale as Locale);
   return {
     title: t('metaTitle'),
-    description: t('metaDescription'),
+    description: s.bioBrief,
   };
 }
 
 export default async function HomePage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const s = getSettings(locale as Locale);
 
   return (
     <main>
@@ -38,14 +40,14 @@ export default async function HomePage({ params }: Props) {
             </div>
             <div className="flex-1">
               <h1 className="text-4xl font-bold text-text-primary sm:text-5xl">
-                {settings.name}
+                {s.name}
               </h1>
               <p className="mt-3 text-lg font-medium text-primary-600 dark:text-primary-400">
-                {settings.tagline}
+                {s.tagline}
               </p>
-              <p className="mt-1 text-sm text-text-muted">{settings.location}</p>
+              <p className="mt-1 text-sm text-text-muted">{s.location}</p>
               <div className="mt-5">
-                <BioToggle brief={settings.bioBrief} full={settings.bioFull} />
+                <BioToggle brief={s.bioBrief} full={s.bioFull} />
               </div>
             </div>
           </div>
@@ -56,7 +58,7 @@ export default async function HomePage({ params }: Props) {
       <section className="py-12 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-5xl">
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {settings.navCards.map((card) => (
+            {s.navCards.map((card) => (
               <Link
                 key={card.href}
                 href={card.href}

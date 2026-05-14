@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
+import { setRequestLocale } from 'next-intl/server';
 import { settings } from '@/lib/data/settings';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { Card } from '@/components/ui/Card';
@@ -9,7 +10,12 @@ export const metadata: Metadata = {
   description: settings.bioBrief,
 };
 
-export default function AboutPage() {
+type Props = { params: Promise<{ locale: string }> };
+
+export default async function AboutPage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   const paragraphs = settings.bioFull.split('\n\n');
 
   return (

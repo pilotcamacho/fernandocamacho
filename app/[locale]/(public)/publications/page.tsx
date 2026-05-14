@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { setRequestLocale } from 'next-intl/server';
 import { publications } from '@/lib/data/publications';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { Card } from '@/components/ui/Card';
@@ -8,7 +9,12 @@ export const metadata: Metadata = {
   description: 'Artículos académicos y presentaciones internacionales en bioingeniería e innovación',
 };
 
-export default function PublicationsPage() {
+type Props = { params: Promise<{ locale: string }> };
+
+export default async function PublicationsPage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   const sorted = [...publications].sort((a, b) => a.order - b.order);
 
   return (

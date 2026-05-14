@@ -16,7 +16,16 @@
       "Bash(npx next *)",
       "PowerShell(Get-ChildItem -Recurse \"C:\\\\Users\\\\pilot\\\\Documents\\\\basura\\\\fernandocamacho-20260513T020830Z-3-001\\\\src\\\\assets\" -File | ForEach-Object { \"$\\($_.DirectoryName.Split\\('\\\\assets\\\\'\\)[1]\\)\\\\$\\($_.Name\\) [$\\([math]::Round\\($_.Length/1KB, 0\\)\\) KB]\" })",
       "PowerShell(Get-ChildItem -Recurse \"C:\\\\Users\\\\pilot\\\\Documents\\\\FERNANDO\\\\Documentos_Apps\\\\fernandocamacho\\\\public\" -File | ForEach-Object { \"$\\($_.DirectoryName.Split\\('public\\\\'\\)[1]\\)\\\\$\\($_.Name\\)\" })",
-      "PowerShell(Get-ChildItem -Recurse \"C:\\\\Users\\\\pilot\\\\Documents\\\\FERNANDO\\\\Documentos_Apps\\\\fernandocamacho\\\\public\" -File | ForEach-Object { $_.FullName.Replace\\(\"C:\\\\Users\\\\pilot\\\\Documents\\\\FERNANDO\\\\Documentos_Apps\\\\fernandocamacho\\\\public\\\\\", \"\"\\) })"
+      "PowerShell(Get-ChildItem -Recurse \"C:\\\\Users\\\\pilot\\\\Documents\\\\FERNANDO\\\\Documentos_Apps\\\\fernandocamacho\\\\public\" -File | ForEach-Object { $_.FullName.Replace\\(\"C:\\\\Users\\\\pilot\\\\Documents\\\\FERNANDO\\\\Documentos_Apps\\\\fernandocamacho\\\\public\\\\\", \"\"\\) })",
+      "Bash(npm install *)",
+      "Bash(node -e \"const p = require\\('./node_modules/next-intl/package.json'\\); console.log\\(p.version\\)\")",
+      "Bash(node -e \"const m = require\\('./node_modules/next-intl/dist/cjs/routing.js'\\); console.log\\(Object.keys\\(m\\)\\)\")",
+      "Bash(node -e \"const m = require\\('./node_modules/next-intl/dist/cjs/middleware.js'\\); console.log\\(Object.keys\\(m\\)\\)\")",
+      "Bash(node -e \"const d=require\\('fs'\\).readFileSync\\('/dev/stdin','utf8'\\); const p=JSON.parse\\(d\\); console.log\\(JSON.stringify\\(Object.keys\\(p.exports\\).slice\\(0,30\\), null, 2\\)\\)\")",
+      "Bash(node *)",
+      "Bash(Remove-Item *)",
+      "Bash(npx tsc *)",
+      "Bash(npm run *)"
     ]
   }
 }

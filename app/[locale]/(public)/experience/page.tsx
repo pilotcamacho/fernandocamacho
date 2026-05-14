@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { setRequestLocale } from 'next-intl/server';
 import { experience } from '@/lib/data/experience';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { Card } from '@/components/ui/Card';
@@ -8,7 +9,12 @@ export const metadata: Metadata = {
   description: '25+ años en EdTech, salud, consultoría y tecnología',
 };
 
-export default function ExperiencePage() {
+type Props = { params: Promise<{ locale: string }> };
+
+export default async function ExperiencePage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   const sorted = [...experience].sort((a, b) => a.order - b.order);
 
   return (

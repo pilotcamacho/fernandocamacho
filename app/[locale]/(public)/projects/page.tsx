@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { setRequestLocale } from 'next-intl/server';
 import { projects } from '@/lib/data/projects';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { ProjectsClient } from '@/components/projects/ProjectsClient';
@@ -8,7 +9,12 @@ export const metadata: Metadata = {
   description: '20+ proyectos desde 1991 hasta el presente en EdTech, salud, tecnología e innovación',
 };
 
-export default function ProjectsPage() {
+type Props = { params: Promise<{ locale: string }> };
+
+export default async function ProjectsPage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   const sorted = [...projects].sort((a, b) => a.order - b.order);
 
   return (

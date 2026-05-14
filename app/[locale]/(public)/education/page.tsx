@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
+import { setRequestLocale } from 'next-intl/server';
 import { education, certifications } from '@/lib/data/education';
 import type { DiplomaFile } from '@/lib/data/education';
 import { SectionHeader } from '@/components/ui/SectionHeader';
@@ -45,7 +46,12 @@ function DiplomaLinks({ files }: { files: DiplomaFile[] }) {
   );
 }
 
-export default function EducationPage() {
+type Props = { params: Promise<{ locale: string }> };
+
+export default async function EducationPage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   const sortedEdu   = [...education].sort((a, b) => a.order - b.order);
   const sortedCerts = [...certifications].sort((a, b) => a.order - b.order);
 

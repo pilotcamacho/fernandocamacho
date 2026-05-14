@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { setRequestLocale } from 'next-intl/server';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { Card } from '@/components/ui/Card';
 
@@ -8,7 +9,12 @@ export const metadata: Metadata = {
     'Propiología: una exploración transdisciplinaria del concepto de la propiedad como fenómeno humano. Disponible en Kindle.',
 };
 
-export default function BookPage() {
+type Props = { params: Promise<{ locale: string }> };
+
+export default async function BookPage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <main className="py-12 px-4 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-3xl">

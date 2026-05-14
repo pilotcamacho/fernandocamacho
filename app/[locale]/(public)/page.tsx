@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
+import { setRequestLocale } from 'next-intl/server';
+import { Link } from '@/i18n/routing';
 import { settings } from '@/lib/data/settings';
 import { BioToggle } from '@/components/home/BioToggle';
 
@@ -9,7 +10,12 @@ export const metadata: Metadata = {
   description: settings.bioBrief,
 };
 
-export default function HomePage() {
+type Props = { params: Promise<{ locale: string }> };
+
+export default async function HomePage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <main>
       {/* Hero */}

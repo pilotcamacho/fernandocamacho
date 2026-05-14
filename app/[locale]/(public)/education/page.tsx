@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { education, certifications } from '@/lib/data/education';
+import { getEducation, getCertifications } from '@/lib/data/education';
 import type { DiplomaFile } from '@/lib/data/education';
+import type { Locale } from '@/lib/data/settings';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { Card } from '@/components/ui/Card';
 
@@ -57,8 +58,8 @@ export default async function EducationPage({ params }: Props) {
   setRequestLocale(locale);
   const t = await getTranslations('education');
 
-  const sortedEdu   = [...education].sort((a, b) => a.order - b.order);
-  const sortedCerts = [...certifications].sort((a, b) => a.order - b.order);
+  const sortedEdu   = [...getEducation(locale as Locale)].sort((a, b) => a.order - b.order);
+  const sortedCerts = [...getCertifications(locale as Locale)].sort((a, b) => a.order - b.order);
 
   return (
     <main className="py-12 px-4 sm:px-6 lg:px-8">

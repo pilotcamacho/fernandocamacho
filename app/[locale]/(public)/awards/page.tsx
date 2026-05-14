@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { awards } from '@/lib/data/awards';
+import { getAwards } from '@/lib/data/awards';
+import type { Locale } from '@/lib/data/settings';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { Card } from '@/components/ui/Card';
 
@@ -20,7 +21,7 @@ export default async function AwardsPage({ params }: Props) {
   setRequestLocale(locale);
   const t = await getTranslations('awards');
 
-  const sorted = [...awards].sort((a, b) => a.order - b.order);
+  const sorted = [...getAwards(locale as Locale)].sort((a, b) => a.order - b.order);
 
   return (
     <main className="py-12 px-4 sm:px-6 lg:px-8">

@@ -1,3 +1,5 @@
+import type { Locale } from './settings';
+
 export interface PublicationItem {
   id: string;
   authors: string;
@@ -92,3 +94,9 @@ export const publications: PublicationItem[] = [
     order: 8,
   },
 ];
+
+// Academic paper titles and venues are published in English and remain unchanged across locales.
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function getPublications(_locale: Locale): PublicationItem[] {
+  return publications;
+}

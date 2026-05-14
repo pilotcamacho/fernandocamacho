@@ -26,6 +26,9 @@ amplify/**/*.mjs
 # Amplify sandbox state
 .amplify/
 
+# Claude Code — local session permissions (machine-specific)
+.claude/settings.local.json
+
 # Misc
 .DS_Store
 *.pem

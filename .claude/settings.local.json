@@ -32,7 +32,9 @@
       "Bash(cmd *)",
       "PowerShell(Get-ItemProperty *)",
       "Bash(python3 -c \"import json,sys; p=json.load\\(sys.stdin\\); print\\('main:', p.get\\('main'\\)\\); print\\('exports:', json.dumps\\(p.get\\('exports', {}\\), indent=2\\)[:500]\\)\")",
-      "PowerShell(Get-ChildItem -Recurse \"C:\\\\Users\\\\pilot\\\\Documents\\\\FERNANDO\\\\Documentos_Apps\\\\fernandocamacho\\\\node_modules\\\\@aws-amplify\\\\data-construct\" | Select-Object FullName | Where-Object { $_.FullName.Length -gt 200 } | Select-Object -First 10)"
+      "PowerShell(Get-ChildItem -Recurse \"C:\\\\Users\\\\pilot\\\\Documents\\\\FERNANDO\\\\Documentos_Apps\\\\fernandocamacho\\\\node_modules\\\\@aws-amplify\\\\data-construct\" | Select-Object FullName | Where-Object { $_.FullName.Length -gt 200 } | Select-Object -First 10)",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\pilot\\\\Documents\\\\FERNANDO\\\\Documentos_Apps\\\\fernandocamacho\\\\app\" -Recurse -Name)",
+      "Bash(Select-Object -First 50)"
     ]
   }
 }

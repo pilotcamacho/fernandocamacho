@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import { usePathname, Link } from '@/i18n/routing';
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils/cn';
+import { LocaleSwitcher } from '@/components/layout/LocaleSwitcher';
 
 export default function Header() {
   const t = useTranslations('nav');
@@ -70,7 +71,8 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-2">
+          <LocaleSwitcher />
           <button
             onClick={toggleTheme}
             aria-label={t('toggleTheme')}
